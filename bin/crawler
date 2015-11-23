@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'crawler'
+
+unless file = ARGV[0]
+  puts "You must provide a file of URLs to check"
+  exit
+end
+
+File.open(file, "r") do |file|
+  file.each_line do |line|
+    url = line.strip
+    next if url.empty?
+	  
+    crawler = Crawler::Crawler.new
+    result = crawler.find_bad_links(url)
+    puts "(#{file.lineno}) #{url}"
+    puts "(#{file.lineno}) #{result[:title].strip}"
+    puts "(#{file.lineno}) There were #{result[:failures].size} link failures"
+    result[:failures].each do |failure|
+      puts "\t#{failure[:name].to_s.strip} => #{failure[:code]}"
+      puts "\t\t#{failure[:url].to_s.strip}"
+    end
+  end
+end
+

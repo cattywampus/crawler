@@ -1,8 +1,13 @@
+PATH
+  remote: .
+  specs:
+    crawler (0.1.0)
+      mechanize
+      ruby-progressbar
+
 GEM
   remote: https://rubygems.org/
   specs:
-    ansi (1.5.0)
-    builder (3.2.2)
     byebug (8.2.0)
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
@@ -20,11 +25,6 @@ GEM
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.3)
-    minitest-reporters (1.1.5)
-      ansi
-      builder
-      minitest (>= 5.0)
-      ruby-progressbar
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     nokogiri (1.6.6.3)
@@ -41,9 +41,8 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  mechanize
+  crawler!
   minitest
-  minitest-reporters
 
 BUNDLED WITH
    1.10.6
